@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors Game</title>
+    <link rel="stylesheet" href="rps-styles.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Let's Play <span id="game-name">Rock, Paper, Scissors</span></h1>
+
+        <details>
+            <summary id="instructions" style="cursor: pointer">Game Instructions</summary>
+            <p>To play the game, the following rules hold:</p>
+            
+            <p>1. Rock breaks Scissors</p>
+            <p>2. Paper wraps Rock</p>
+            <p>3. Scissors cut Paper</p>
+            <p>4. First to score 5 wins the game</p>
+        </details>
+        
+        <div class="scores">
+            <p>Player Score: <span id="pScore">0</span></p>
+            <p>Computer Score: <span id="compScore">0</span></p>
+            <p></p>
+        </div>
+        
+
+        <div id="buttons">
+            <button class="btn" id="rock">Rock</button>
+            <button class="btn" id="paper">Paper</button>
+            <button class="btn" id="scissors">Scissors</button>
+        </div>
+
+        <div id="texts">
+            <p class="texts" id="round-text"></p>
+            <p class="texts" id="winner-text"></p>
+        </div>
+
+        
+        <button class='btn' id='reset' style="display: none">Play Again?</button>
+        
+    </div>
+
+    <script>
+        const player = document.querySelector('#pScore');
+        const comp = document.querySelector('#compScore');
+        let pScore = 0;
+        let compScore = 0;
+        const rock = document.querySelector('#rock');
+        const paper = document.querySelector('#paper');
+        const scissors = document.querySelector('#scissors');
+        const roundText = document.querySelector('#round-text');
+        const winnerText = document.querySelector('#winner-text');
+        const buttons = document.querySelector('#buttons');
+        const resetBtn = document.querySelector('#reset');
+
+
+        function getCompChoice(){
+            const compOptions = ['rock', 'paper', 'scissors'];
+            const optionsIndex = Math.floor(Math.random() * compOptions.length);
+            const compChoice = compOptions[optionsIndex]
+            return(compChoice);
+        }
+
+        function getRoundWinner(playerChoice){
+            const compChoice = getCompChoice();
+            if(playerChoice === 'rock' && compChoice === 'scissors'){
+                pScore++;
+                roundText.innerText = `You win! ${playerChoice.toUpperCase()} breaks the ${compChoice.toUpperCase()} `;
+            }else if(playerChoice === 'paper' && compChoice === 'rock'){
+                pScore++;
+                roundText.innerText = `You win! ${playerChoice.toUpperCase()} wraps the ${compChoice.toUpperCase()} `;
+            }else if(playerChoice === 'scissors' && compChoice === 'paper'){
+                pScore++;
+                roundText.innerText = `You win! ${playerChoice.toUpperCase()} cut the ${compChoice.toUpperCase()}`;
+            }else{
+                if(playerChoice === compChoice){
+                    roundText.innerText = `It's a tie. You both choose ${playerChoice.toUpperCase()}`; 
+                }else{
+                    compScore++;
+                    roundText.innerText = `Computer Wins. ${compChoice.toUpperCase()} beats ${playerChoice.toUpperCase()}`;
+                    
+
+                }
+            }
+            
+            player.innerText = pScore;
+            comp.innerText = compScore;
+
+        }
+
+
+        function rockBtn() {
+            const Choice = 'rock';
+            getRoundWinner(Choice);
+            checkWinner();
+        }
+
+        function paperBtn() {
+            const Choice = 'paper';
+            getRoundWinner(Choice);
+            checkWinner();
+        }
+
+        function scissorsBtn() {
+            const Choice = 'scissors';
+            getRoundWinner(Choice);
+            checkWinner();
+        }
+
+        function reset(){
+            roundText.innerText = '';
+            roundText.style.display = 'block';
+            winnerText.innerText = '';
+            winnerText.style.display = 'none';
+            buttons.style.display = 'block';
+            resetBtn.style.display = 'none';
+            compScore = 0;
+            comp.innerText = compScore;
+            pScore = 0;
+            player.innerText = pScore;
+        }
+
+        function checkWinner(){
+            if(pScore >= 5 || compScore >= 5){
+                buttons.style.display = 'none';
+                resetBtn.style.display = 'block';
+                winnerText.style.display = 'block';
+                
+                if(pScore >= 5){
+                    winnerText.innerText = 'You have already won the game';
+                }else if(compScore >= 5){
+                    winnerText.innerText = 'Computer has already won the game'
+                }
+            }
+        }
+
+
+
+        rock.onclick = rockBtn;
+        paper.onclick = paperBtn;
+        scissors.onclick = scissorsBtn;
+        resetBtn.onclick = reset;
+    </script>
+    
+</body>
+</html>
