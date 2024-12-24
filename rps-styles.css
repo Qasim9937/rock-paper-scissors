@@ -51,12 +51,11 @@ main{
 
 
 details{
-  background-color: var(--text-color);
   min-width: 80%;
   text-align: center;
   text-align: left;
   color: black;
-  padding: 20px;
+  padding: 5px;
   border: none;
   display: flex;
   flex-direction: column;
