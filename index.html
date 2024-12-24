@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="rps-styles.css">
 </head>
 <body>
-
-    
+<header>
         <h1>Let's Play <span id="game-name">Rock, Paper, Scissors</span></h1>
+    </header>
 
+    <main>
         <details>
             <summary id="instructions" style="cursor: pointer">Game Instructions</summary>
             <p>To play the game, the following rules hold:</p>
@@ -38,10 +39,13 @@
             <p class="texts" id="round-text"></p>
             <p class="texts" id="winner-text"></p>
         </div>
+    
 
-        
+    
         <button class='btn' id='reset' style="display: none">Play Again?</button>
-        
+            
+        </div>
+    </main>  
 
     <script>
         const player = document.querySelector('#pScore');
