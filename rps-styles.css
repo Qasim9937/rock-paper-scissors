@@ -1,3 +1,17 @@
+:root{
+  --background: #7c047c;
+  --text-color: white;
+  --rock-button: #463c3c;
+  --scissors-button: #0ba006;
+  --paper-color: #ff8e23;
+}
+
+*{
+  padding: 0;
+  margin: 0; 
+  box-sizing: border-box;
+}
+
 body{
    width: 100vw;
    padding: 0;
