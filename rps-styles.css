@@ -99,13 +99,27 @@ summary{
 
 .btn{
   padding: 20px;
-  background-color: goldenrod;
+  border-radius: 100px;
   border: none;
-  box-shadow: 0 0 5px black;
-  font-weight: bold;
   width: 100px;
+  height: 50px;
   text-align: center;
+  border: 2px solid whitesmoke;
+  color: var(--text-color);
 }
+
+#scissors{
+  background-color: var(--scissors-button);
+}
+
+#paper{
+  background-color: var(--paper-color);
+}
+
+#rock{
+  background-color: var(--rock-button);
+}
+
 
 #reset{
   background-color: rgb(15, 224, 15);
