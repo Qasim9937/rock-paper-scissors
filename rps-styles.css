@@ -120,9 +120,23 @@ summary{
   background-color: var(--rock-button);
 }
 
+#texts{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-color);
+}
+
+#winner-text{
+  font-weight: bold;
+  font-size: 20px;
+}
 
 #reset{
   background-color: rgb(15, 224, 15);
-  color: white;
-  text-shadow: 0 0 5px black;
+  border-radius: 0;
+  width: 150px;
+  height: 75px;
+  color: var(--text-color);
 }
